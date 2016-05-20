@@ -1,0 +1,241 @@
+% 2013-11-01
+% exemple de présentation Beamer
+% contact : admin@mat.ulaval.ca
+\documentclass{beamer}
+% Document en français, césure, chapitres, etc
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[francais]{babel}
+\uselanguage{French}
+\languagepath{French}
+% permet d'include des figures TikZ
+\usepackage{pgf}
+\usepackage{tikz}
+
+% thème de la présentation : Darmstadt
+% la matrice des thèmes Beamer se trouve à cette
+% adresse : http://www.hartwork.org/beamer-theme-matrix/
+\mode<presentation> {
+\usetheme{Darmstadt}
+% couleurs et logo de l'Université Laval
+\setbeamercovered{transparent}
+\definecolor{rouge}{RGB}{255,0,0}
+\definecolor{or}{RGB}{255,204,0}
+\definecolor{noir}{RGB}{0,0,0}
+\setbeamercolor{structure}{fg=rouge,bg=or}
+\setbeamercolor{titlelike}{fg=noir,bg=or}
+\setbeamercolor{frametitle}{fg=rouge,bg=or}
+\setbeamercolor{item}{fg=rouge,bg=or}
+\logo{\includegraphics[width=1.5cm]{logo_UL.jpg}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Début de la présentation Beamer %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Exemple de présentation Beamer}
+\author{Philémon Siclone}
+\institute{Département de mathématiques et de statistique (DMS)\\
+http://www.mat.ulaval.ca
+}
+
+\date{\today}
+
+\begin{document}
+
+% page titre
+\begin{frame}
+\titlepage
+\end{frame}
+
+% plan de la présentation
+\begin{frame}
+\frametitle{Plan de la présentation}
+\tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%
+% Partie 1 %
+%%%%%%%%%%%%
+\section{Introduction}
+\begin{frame}
+\frametitle{Commentaires généraux}
+\begin{itemize}
+ \item Beamer est l'outil de choix pour faire des présentations mathématiques.
+        C'est l'équivalent (\alert{en mieux!}) de PowerPoint. Contrairement à ce dernier,
+        les équations y sont lisibles...
+ \item Pour écrire des mathématiques, on utilise la syntaxe de \LaTeX.
+ \item On peut cliquer sur l'item ou sur les cercles qui apparaissent en haut de
+        la page pour naviguer dans la présentation. Chaque item correspond à une section
+        et chaque cercle à une sous-section.
+ \item Cette introduction vous indiquera quelques principes de base: syntaxe des transparents,
+       comment insérer une figure, etc.
+ \item Un gros merci à \alert{Till Tantau} l'auteur de Beamer!
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%
+% Partie 2 %
+%%%%%%%%%%%%
+\section{Mathématiques}
+\subsection{Faire des mathématiques dans Beamer}
+% partie 2 : page 1
+\begin{frame}
+\frametitle{Des constantes}
+Quelques constantes importantes.
+\begin{align*}
+\varphi &= \frac{1+\sqrt{5}}{2} = 1.618\,033\,9887\ldots \\[0.5cm]
+e &= \lim_{n\to\infty} \left( 1 + \frac{1}{n} \right)^n \\[0.5cm]
+\pi &= \sum_{i=0}^{\infty} \frac{1}{16^i}
+      \left( \frac{4}{8i+1} - \frac{2}{8i+4}
+    - \frac{1}{8i+5} - \frac{1}{8i+6} \right)
+\end{align*}
+\end{frame}
+
+% partie 2 : page 2
+\begin{frame}
+\frametitle{Des équations lisibles...}
+\begin{itemize}
+\item<1> $ \cos^2\theta + \sin^2\theta = 1 $
+\item<2> Un problème trivial d'un illustre inconnu nommé Fermat: $a^n  + b^n = c^n$
+\item<3> Que les fluides incompressibles soient!
+\[
+\left\{
+\begin{array}{rcl}
+
+ \nabla{}\cdot  u & =& 0\\
+\\
+  \displaystyle  \left(\frac{\partial  u}{\partial t} + u \cdot \nabla{ u}\right)+\nabla{p} -  
+  \frac{2}{Re}\nabla{} \cdot \big(\dot\gamma( u)\big) & =&  f \\
+\end{array}
+\right.
+\]
+\end{itemize}
+\end{frame}
+
+% partie 2 : page 3
+\subsection{Encore des mathématiques!}
+\begin{frame}
+\frametitle{Lemmes, théorèmes et corollaires}
+\begin{lemma}[Siclone]
+\label{trivia}
+Si $a=2$ alors $a^2 = 4$.
+\end{lemma}
+
+\begin{theorem}[Pythagore]
+\label{th_pyt}
+   Pour un triangle droit de côtés $a$, $b$ et d'hypothénuse $c$, on a:
+\[
+  a^2 + b^2 = c^2
+\]
+\end{theorem}
+\begin{proof}
+La preuve est laissée en exercice.
+\end{proof}
+Le théorème de Pythagore est l'un des plus célèbres résultats.
+On sous-estime beaucoup l'importance du lemme de Siclone. 
+\end{frame}
+
+%%%%%%%%%%%%
+% Partie 3 %
+%%%%%%%%%%%%
+\section{Laboratoires informatiques}
+% partie 3 : page 1
+\begin{frame}
+\frametitle{Les laboratoires informatiques}
+Le département de mathématiques et de statistique compte
+trois laboratoires informatiques.\\
+\begin{center}
+\begin{tabular}{|c|c|} \hline
+{\bf local} & {\bf \# d'ordinateurs} \\ \hline \hline
+1069 & 26 \\ \hline
+1073 & 7  \\ \hline
+1448 & 10 \\ \hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+% partie 3 : page 2
+\begin{frame}
+\frametitle{Leur utilisation}
+\begin{itemize}
+\item Laboratoire de 1er cycle, local 1069.
+\begin{center}
+\includegraphics[width=6cm]{1069.jpg}
+\end{center}
+\item Le laboratoire informatique, situé au local 1073, est réservé
+      aux étudiants gradués.
+\item Celui du 1448 est réservé aux chanceux du GIREF!
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%
+% Partie 4 %
+%%%%%%%%%%%%
+\section{Figures, graphiques et photos}
+
+\subsection{TikZ}
+% partie 4 : page 1
+\begin{frame}
+\frametitle{Créer un graphique}
+Avec un peu de patience, on peut créer des graphiques très complexes à l'aide de TikZ.
+\begin{center}
+\begin{tikzpicture}
+% horizontal axis
+\draw[->] (0,0) -- (6,0) node[anchor=north] {$f/f_N$};
+% labels
+\draw   (0,0) node[anchor=north] {0}
+                (2,0) node[anchor=north] {1}
+                (4,0) node[anchor=north] {2};
+% ranges
+\draw   (1,3.5) node{{\scriptsize Constant flux}}
+        (4,3.5) node{{\scriptsize Field weakening}};
+
+% vertical axis
+\draw[->] (0,0) -- (0,4) node[anchor=east] {$U_s,\varPsi_s$};
+% nominal speed
+\draw[dotted] (2,0) -- (2,4);
+
+% Us
+\draw[thick] (0,0) -- (2,2) -- (6,2);
+\draw (1,1.5) node {$U_s$}; %label
+
+% Psis
+\draw[thick,dashed] (0,3) -- (2,3) parabola[bend at end] (6,1);
+\draw (2.5,3) node {$\varPsi_s$}; %label
+
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\subsection{Des photos}
+% partie 4 : page 2
+\begin{frame}
+\frametitle{Insérer une image jpg}
+Il est facile d'ajouter des figures ou des photos dans une présentation Beamer.
+\begin{center}
+\begin{tabular}{cc}
+\includegraphics[width=3cm]{Bibendum.jpg} &
+\includegraphics[width=6cm]{clumeq.jpg} \\
+\end{tabular}
+\end{center}
+\end{frame}
+
+% partie 4 : page 3
+\begin{frame}
+\only<1>{
+\frametitle{Université Laval jadis}
+\begin{center}
+\includegraphics[width=8cm]{ul1.jpg}
+\end{center}
+}
+\only<2>{
+\frametitle{Université Laval maintenant}
+\begin{center}
+www.ulaval.ca\\[0.2cm]
+\includegraphics[width=8cm]{ul2.jpg}
+\end{center}
+}
+\end{frame}
+
+\end{document}
