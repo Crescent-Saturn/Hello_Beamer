@@ -10,7 +10,9 @@
 \DeclareGraphicsExtensions{.jpg,.png,.pdf,.eps}
 
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
 \usepackage{fontspec}
+\usepackage{subfig}
 
 \title{Liquid Nitrogen Cooling in IR Thermography applied to steel specimen}
 
@@ -64,13 +66,14 @@ One side test approach is often used in the Infrared Thermography for NDT \& E f
 The following equipments are set up for this experiment:
 \begin{itemize}
    \item Infrared Camera FLIR SC3000 (320$\times$240 pixels, GaAs, 8-9 $\mu m$)
-   \item 2 Sets of 2 Pair Halogen lamps with heat source of (???)$W$ (\textbf{REF TO Paolo})
-   \item Liquid Nitrogen
+   \item 2 Sets of 2 Pair halogen lamps with heat source of (???)$W$ (\textbf{REF TO Paolo})
+   \item A pair of modulated halogen lamps (???$W$) served as Lock-in stimulation
+   \item An isolated bottle full of Liquid Nitrogen
 \end{itemize}
 
 \subsection{Specimen} % (fold)
 \label{sub:specimen}
-In this study, a steel sample with flat-bottom holes along different depths and sizes will be examined. Their dimensions are illustrated in Figure~\ref{specimen}.
+In this study, a specimen made of steel has been prepared with flat-bottom holes along different depths and sizes will be examined. Their dimensions are depicted in Figure~\ref{specimen}.
    \begin{figure}[ht]
    \centering   
    % \begin{tabular}{c} %% tabular useful for creating an array of images 
@@ -91,7 +94,7 @@ Three external stimulations are planned to deployed on the sample:
    \item Lock-in Thermography (LT)
    \item Liquid Nitrogen cooling 
 \end{itemize}
-Known as the traditional and fast technique in NDT \& E, Pulse Thermography acts as the reference during the test. Whereas, 3 different frequencies (??? \textbf{REF TO Paolo}) are performed in Lock-in Thermography for results comparison. The Liquid Nitrogen applied in the test is in a way of pouring-out directly to cool the sample. One pours LN2 from the specimen center and lets it spread around to the edges. Its set-up is shown in Figure~\ref{Exp_LN2}.
+Known as the traditional and fast technique in NDT \& E, Pulse Thermography acts as the reference during this test. Whereas, 3 different frequencies (??? \textbf{REF TO Paolo}) are performed in Lock-in Thermography for results comparison. The Liquid Nitrogen applied in the test is in a way of pouring-out directly to cool the sample. One pours LN2 from the specimen center and lets it spread around to the edges. Its set-up is shown in Figure~\ref{Exp_LN2}.
 
 \begin{figure}[ht]
    \centering
@@ -115,29 +118,46 @@ The following image-processing techniques are employed for this study:
 \end{itemize}
 
 \subsection{PCT}
-
-\subsection{FFT in Phase}
+Principal Component Thermography technique uses “singular value decomposition (SVD) to reduce the matrix of observations to a highly compact statistical representation of the spatial and temporal variations relating to contrast information associated with underlying structural flaws”.
+\subsection{FFT in Phase and Amplitude}
+Besides PT, LIT is also one of the most used technique in IR Thermography which is based on the periodic heating of the object under test. A thermal wave is likewise generated and propagates inside the material. In real experimental cases the thermal wave is composed by a principal frequency and several harmonics where the amplitude of the Fast Fourier Transform is a function of frequency. By selecting the component with the highest amplitude it is possible to produce a map of phase at the corresponding frequency where the defect appears enhanced.
 
 
 \subsection{ROC curve analysis} % (fold)
 \label{sub:roc_curve_analysis}
-Receiver operating characteristic (ROC) curves
-
-A binary map of defects location is compared to the post-processed images in gray scale.
+Receiver operating characteristic (ROC) curve is a technique in statistics which helps visualize, organize and select classifiers based on their performance~\cite{Fawcett2006}. The graph is created by plotting the the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings.
+A binary map of defects location is built and compared to the post-processed images in gray scale.
 % subsection roc_curve (end)
 
 
 % section methods (end)
 \section{Results \& Discussion} % (fold)
 \label{sec:results_&_discussion}
-Figure~\ref{PCT_result} displays the PCT results of three stimulation techniques.
+Figure~\ref{PCT_result} illustrates the PCT results of three stimulation techniques.
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.4]{graph/Flash_PCT_2.png}
-    \includegraphics[scale=0.4]{graph/Cool_PCT_2.png}
-    \includegraphics[scale=0.4]{graph/LIT4_PCT_3.png}
-    \includegraphics[scale=0.4]{graph/LIT8_PCT_3.png}
-    \includegraphics[scale=0.4]{graph/LIT16_PCT_3.png}
+    \subfloat[Flash PCT 2nd Image]{
+      \includegraphics[scale=0.4]{graph/Flash_PCT_2.png}
+      }
+    \hspace{10pt}
+    \subfloat[LN2 PCT 2nd Image]{
+      \includegraphics[scale=0.4]{graph/Cool_PCT_2.png}
+      }
+    \hspace{10pt}
+    \subfloat[LIT4 PCT 3rd Image]{
+      \includegraphics[scale=0.4]{graph/LIT4_PCT_3.png}
+      }    
+    \hspace{10pt}
+    \subfloat[LIT8 PCT 3rd Image]{
+      \includegraphics[scale=0.4]{graph/LIT8_PCT_3.png}
+      }
+    \hspace{10pt}
+    \subfloat[LIT16 PCT 3rd Image]{
+      \includegraphics[scale=0.4]{graph/LIT16_PCT_3.png}
+      }
+    % \includegraphics[scale=0.4]{graph/LIT4_PCT_3.png}
+    % \includegraphics[scale=0.4]{graph/LIT8_PCT_3.png}
+    % \includegraphics[scale=0.4]{graph/LIT16_PCT_3.png}
     \caption{PCT results of corresponding technique}
     \label{PCT_result}
 \end{figure}
@@ -153,8 +173,16 @@ Comparing the processed thermal images, the following observations can be summar
 Therefore, ROC curves obtained from comparing the binary map of defects location to above PCT results are illustrated in Figure~\ref{ROC_curve}.
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.5]{graph/ROC_PCT.png}
-    \caption{ROC curves obtained from PCT results}
+    \subfloat[ROC from PCT]
+    {
+    \includegraphics[scale=0.55]{graph/ROC_PCT.png}
+    }
+    \hspace{10pt}
+    \subfloat[ROC from LIT]
+    {
+    \includegraphics[scale=0.55]{graph/ROC_LIT_AMP.png}
+    }
+    \caption{ROC curves obtained from above results}
     \label{ROC_curve}
 \end{figure}
 
@@ -174,7 +202,6 @@ Therefore, ROC curves obtained from comparing the binary map of defects location
    \item Better ROC curve obtained by the Flash technique
 
 \end{itemize}
-% section conclusion (end)
 
 % Begin the Introduction below the Keywords. The manuscript should not have headers, footers, or page numbers. It should be in a one-column format. References are often noted in the text and cited at the end of the paper.
 
@@ -355,7 +382,7 @@ our collaborative institute CNR-ITC Padova which provided expertise that greatly
 in this research. 
 
 % References
-\bibliography{report} % bibliography data in report.bib
-\bibliographystyle{Biblio_th} % makes bibtex use spiebib.bst
+\bibliography{Biblio_th} % bibliography data in report.bib
+\bibliographystyle{spiebib} % makes bibtex use spiebib.bst
 
 \end{document} 
