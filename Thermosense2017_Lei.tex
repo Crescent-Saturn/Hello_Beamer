@@ -12,7 +12,7 @@
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 
 \usepackage{fontspec}
-\usepackage{subfig}
+\usepackage[caption=false]{subfig}
 
 \title{Liquid Nitrogen Cooling in IR Thermography applied to steel specimen}
 
@@ -53,17 +53,24 @@ Opposite: Cooling
 
 \section{Experimental setup} % (fold)
 \label{sec:experimental_setup}
-One side test approach is often used in the Infrared Thermography for NDT \& E field, which is also known as reflection scheme: both the stimulation device and the camera stay on the same side of the sample under test. The approach in reality is shown in Figure~\ref{Exp_setup}.
+One side stimulation approach is often used in the Infrared Thermography for NDT \& E field, which is also known as reflection scheme: both the stimulation device and the camera stay on the same side of the sample under test. This approach applied in reality is shown in Figure~\ref{Exp_setup}.
 
 \begin{figure}[ht]
    \centering
-   \includegraphics[scale=0.3]{graph/Flash_Setup.png}
-   \includegraphics[scale=0.3]{graph/LIT_setup.png}
-   \caption{Experimental set-up for Pulse Thermography (left) and Lock-in Thermography (right) in the \textit{reflection} mode}
+   \subfloat[Pulsed Thermography set-up]
+   {
+      \includegraphics[scale=0.3]{graph/Flash_Setup.png}
+   }
+   %\hspace{5pt}
+   \subfloat[Lock-in Thermography set-up]
+   {
+      \includegraphics[scale=0.3]{graph/LIT_setup.png}
+   }
+   \caption{Experimental set-up in the \textit{reflection} mode}
    \label{Exp_setup}
 \end{figure}
 
-The following equipments are set up for this experiment:
+The following equipments are set up for this study:
 \begin{itemize}
    \item Infrared Camera FLIR SC3000 (320$\times$240 pixels, GaAs, 8-9 $\mu m$)
    \item 2 Sets of 2 Pair halogen lamps with heat source of (???)$W$ (\textbf{REF TO Paolo})
@@ -94,7 +101,18 @@ Three external stimulations are planned to deployed on the sample:
    \item Lock-in Thermography (LT)
    \item Liquid Nitrogen cooling 
 \end{itemize}
-Known as the traditional and fast technique in NDT \& E, Pulse Thermography acts as the reference during this test. Whereas, 3 different frequencies (??? \textbf{REF TO Paolo}) are performed in Lock-in Thermography for results comparison. The Liquid Nitrogen applied in the test is in a way of pouring-out directly to cool the sample. One pours LN2 from the specimen center and lets it spread around to the edges. Its set-up is shown in Figure~\ref{Exp_LN2}.
+Known as the traditional and fast technique in NDT \& E, Pulse Thermography acts as the reference during this test. When neglecting heat exchange with the environment, the pulse of energy $Q$, delivered on a layer of thickness $L$, characterized by a density $\rho$, a specific heat $C_p$ and a thermal conductivity $\lambda$ (or a thermal diffusivity $\alpha$) gives increment to a temperature behavior on the heated surface by:
+\begin{equation}
+   T(t) = \frac{Q}{\rho C_p L}[1+2\sum_{n=1}^{\infty} e^{-\frac{n^2 \pi ^2\alpha t}{L^2}}]
+   \label{eq_pt}
+\end{equation}
+For the situation of modulated periodic heating, 3 different angular frequencies $\omega$ of 100~$Hz$, 200~$Hz$ and 400~$Hz$ (??? \textbf{VERIFY with Paolo}) are performed in Lock-in Thermography. By the convolution integral, Eq~\ref{eq_pt} becomes:
+\begin{equation}
+   T(t) = \frac{W}{\lambda}\frac{\alpha}{L}\int_0^t d\tau \Big(1+\sin(\omega \tau - \frac{\pi}{2})\Big)\Big\{1+2\sum_{n=1}^{\infty} e^{-\frac{n^2 \pi ^2\alpha(t-\tau)}{L^2}}\Big\}
+\end{equation}
+where $W$ is the absorbed heating power.
+
+The Liquid Nitrogen applied in the test is in a way of pouring-out directly to cool the sample. One pours LN2 from the specimen center and lets it spread around to the edges. Its set-up is shown in Figure~\ref{Exp_LN2}.
 
 \begin{figure}[ht]
    \centering
@@ -118,15 +136,30 @@ The following image-processing techniques are employed for this study:
 \end{itemize}
 
 \subsection{PCT}
-Principal Component Thermography technique uses “singular value decomposition (SVD) to reduce the matrix of observations to a highly compact statistical representation of the spatial and temporal variations relating to contrast information associated with underlying structural flaws”.
+Principal Component Thermography technique\cite{Rajic2002} uses “singular value decomposition (SVD) to reduce the matrix of observations to a highly compact statistical representation of the spatial and temporal variations relating to contrast information associated with underlying structural flaws”.
 \subsection{FFT in Phase and Amplitude}
-Besides PT, LIT is also one of the most used technique in IR Thermography which is based on the periodic heating of the object under test. A thermal wave is likewise generated and propagates inside the material. In real experimental cases the thermal wave is composed by a principal frequency and several harmonics where the amplitude of the Fast Fourier Transform is a function of frequency. By selecting the component with the highest amplitude it is possible to produce a map of phase at the corresponding frequency where the defect appears enhanced.
+Besides PT, Fast Fourier Transform in LIT\cite{wu1998lock} is also one of the most used technique in IR Thermography which is based on the periodic heating of the object under test. A thermal wave is likewise generated and propagates inside the material. In real experimental cases the thermal wave is composed by a principal frequency and several harmonics where the amplitude of the Fast Fourier Transform is a function of frequency. By selecting the component with the highest amplitude it is possible to produce a map of phase at the corresponding frequency where the defect appears enhanced.
 
 
 \subsection{ROC curve analysis} % (fold)
 \label{sub:roc_curve_analysis}
-Receiver operating characteristic (ROC) curve is a technique in statistics which helps visualize, organize and select classifiers based on their performance~\cite{Fawcett2006}. The graph is created by plotting the the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings.
-A binary map of defects location is built and compared to the post-processed images in gray scale.
+Receiver operating characteristic (ROC) curve is a technique in statistics which helps visualize, organize and select classifiers based on their performance\cite{Fawcett2006}. The graph is created by plotting the the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings.
+A binary map of defects location is built and compared to the post-processed images in gray scale, the lay-out is sketched in Figure~\ref{binary}.
+
+\begin{figure}[ht]
+   \centering
+   \subfloat[Cool map]
+   {
+      \includegraphics[scale=1]{graph/Cool_ROC.png}
+   }
+   \subfloat[Binary map of defects]
+   {
+      \includegraphics[scale=0.246]{graph/Schema_done.png}
+   }
+   \caption{One example of ROC analysis (LN2 results) and binary map}
+   \label{binary}
+\end{figure}
+
 % subsection roc_curve (end)
 
 
@@ -170,7 +203,7 @@ Comparing the processed thermal images, the following observations can be summar
 \end{itemize}
 
 \subsection{Corresponding ROC curves comparison}
-Therefore, ROC curves obtained from comparing the binary map of defects location to above PCT results are illustrated in Figure~\ref{ROC_curve}.
+Therefore, ROC curves obtained from comparing the binary map of defects location to above PCT results are represented in Figure~\ref{ROC_curve}.
 \begin{figure}[ht]
     \centering
     \subfloat[ROC from PCT]
