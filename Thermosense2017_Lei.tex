@@ -73,14 +73,14 @@ One side stimulation approach is often used in the Infrared Thermography for NDT
 The following equipments are set up for this study:
 \begin{itemize}
    \item Infrared Camera FLIR SC3000 (320$\times$240 pixels, GaAs, 8-9 $\mu m$)
-   \item 2 Sets of 2 Pair halogen lamps with heat source of (???)$W$ (\textbf{REF TO Paolo})
-   \item A pair of modulated halogen lamps (???$W$) served as Lock-in stimulation
+   \item Two pairs halogen lamps with heat source of (???)$W$ (\textbf{REF TO Paolo})
+   \item One pair of modulated halogen lamps (???$W$) served as Lock-in stimulation
    \item An isolated bottle full of Liquid Nitrogen
 \end{itemize}
 
 \subsection{Specimen} % (fold)
 \label{sub:specimen}
-In this study, a specimen made of steel has been prepared with flat-bottom holes along different depths and sizes will be examined. Their dimensions are depicted in Figure~\ref{specimen}.
+In this study, a specimen made of steel prepared with flat-bottom holes along different depths and sizes will be examined. Their dimensions are depicted in Figure~\ref{specimen}.
    \begin{figure}[ht]
    \centering   
    % \begin{tabular}{c} %% tabular useful for creating an array of images 
@@ -90,16 +90,17 @@ In this study, a specimen made of steel has been prepared with flat-bottom holes
 %>>>> use \label inside caption to get Fig. number with \ref{}
     \label{specimen} 
    \end{figure}  
-Where seventeen holes in which diameters varying from 0.4 $cm$  to 3 $cm$, and depths varying from 0.3 $cm$ to 0.9 $cm$. This specimen is painted before the test, in order to increase its emissivity and to get a homogeneous external simulation.
+
+Where seventeen holes in which diameters vary from 0.4 $cm$  to 3 $cm$, and depths vary from 0.3 $cm$ to 0.9 $cm$. This specimen is painted before the test, in order to increase its emissivity and to get a homogeneous external simulation.
 
 % subsection specimen (end)
 \subsection{Stimulation Techniques} % (fold)
 \label{sub:stimulation_techniques}
-Three external stimulations are planned to deployed on the sample, in order to obtain a good comparison in results: 
+Three external stimulations are planned to deployed on the sample, for the sake of  obtaining a good comparison in results: 
 \begin{itemize}
    \item Pulse Thermography (PT) 
    \item Lock-in Thermography (LT)
-   \item Liquid Nitrogen cooling 
+   \item Liquid Nitrogen cooling (LN2)
 \end{itemize}
 Known as the traditional and fast technique in NDT \& E, Pulse Thermography acts as the reference during this test. When neglecting heat exchange with the environment, the pulse of energy $Q$, delivered on a layer of thickness $L$, characterized by a density $\rho$, a specific heat $C_p$ and a thermal conductivity $\lambda$ (or a thermal diffusivity $\alpha$) gives increment to a temperature behavior on the heated surface by:
 \begin{equation}
@@ -129,25 +130,27 @@ The Liquid Nitrogen applied in the test is in a way of pouring-out directly to c
 
 \section{Processing Methods} % (fold)
 \label{sec:processing_methods}
-The following image-processing techniques are employed for this study:
+The following image-processing techniques and data-analysis methods are employed for this study:
 \begin{itemize}
    \item Principal Component Thermography (PCT)
    \item Phase and Amplitude images Fast Fourier Transform (FFT)
-   \item Receiver operating characteristic curves (ROC Curves)
+   \item Receiver Operating Characteristic curves (ROC Curves)
 \end{itemize}
 
 \subsection{PCT}
 Principal Component Thermography technique\cite{Rajic2002} uses “singular value decomposition (SVD) to reduce the matrix of observations to a highly compact statistical representation of the spatial and temporal variations relating to contrast information associated with underlying structural flaws”.
+
 \subsection{FFT in Phase and Amplitude}
-Besides PT, Fast Fourier Transform in LIT\cite{wu1998lock} is also one of the most used technique in IR Thermography which is based on the periodic heating of the object under test. A thermal wave is likewise generated and propagates inside the material. In real experimental cases the thermal wave is composed by a principal frequency and several harmonics where the amplitude of the Fast Fourier Transform is a function of frequency. By selecting the component with the highest amplitude it is possible to produce a map of phase at the corresponding frequency where the defect appears enhanced.
+In addition to the common technique for NDT \& E, Fast Fourier Transform in LIT\cite{wu1998lock} is also one of the most applied technique in IR Thermography, which is based on the periodic heating of the object under test. A thermal wave is likewise generated and propagates inside the material. In real experimental cases the thermal wave is composed by a principal frequency and several harmonics where the amplitude of the Fast Fourier Transform is a function of frequency. By selecting the component with the highest amplitude it is possible to produce a map of phase at the corresponding frequency where the defect appears enhanced.
 
 
 \subsection{ROC curve analysis} % (fold)
 \label{sub:roc_curve_analysis}
-Receiver operating characteristic (ROC) curve is a technique in statistics which helps visualize, organize and select classifiers based on their performance\cite{Fawcett2006}. The graph is created by plotting the the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings.
+Receiver operating characteristic (ROC) curve is a technique in statistics which helps visualize, organize and select classifiers based on their performance. The curve graph is created by plotting the the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings. More details about concepts and definitions can be found in [T. Fawcett 2006]\cite{Fawcett2006}.
 
 A binary map of defects location is built and correlated to the post-processed images in gray scale, the lay-out is sketched in Figure~\ref{binary}. The main algorithm in the calculation of TPR and FPR is clarified as:
 \begin{enumerate}
+   \item 
    \item 
 \end{enumerate}
 
@@ -212,12 +215,12 @@ Comparing the processed thermal images, the following observations can be summar
 Therefore, ROC curves obtained from comparing the binary map of defects location to above PCT results are represented in Figure~\ref{ROC_curve}.
 \begin{figure}[ht]
     \centering
-    \subfloat[ROC from PCT]
+    \subfloat[ROC from PCT Results]
     {
     \includegraphics[scale=0.55]{graph/ROC_PCT.png}
     }
     \hspace{10pt}
-    \subfloat[ROC from LIT]
+    \subfloat[ROC from LIT FFT in amplitude results]
     {
     \includegraphics[scale=0.55]{graph/ROC_LIT_AMP.png}
     }
