@@ -72,7 +72,7 @@ One side stimulation approach is often used in the Infrared Thermography for NDT
 
 The following equipments are set up for this study:
 \begin{itemize}
-   \item Infrared Camera FLIR SC3000 (320$\times$240 pixels, GaAs, 8-9 $\mu m$)
+   \item Infrared Camera FLIR SC3000 (320$\times$240 pixels, 50Hz, GaAs, 8-9 $\mu m$)
    \item Two pairs halogen lamps with heat source of (???)$W$ (\textbf{REF TO Paolo})
    \item One pair of modulated halogen lamps (???$W$) served as Lock-in stimulation
    \item An isolated bottle full of Liquid Nitrogen
@@ -114,7 +114,7 @@ For the situation of modulated periodic heating, 3 different angular frequencies
 \end{equation}
 where $W$ is the absorbed heating power.
 
-The Liquid Nitrogen applied in the test is in a way of pouring-out directly to cool the sample. One sprinkles LN2 from the specimen center and lets it spread around to the edges. Its set-up is shown in Figure~\ref{Exp_LN2}.
+The Liquid Nitrogen applied in the test is in a way of pouring-out directly to cool the sample. One sprinkles LN2 from the specimen center and lets it spread around to the edges. The whole capture duration is 500 frames with 50~$Hz$ of image frequency, ie. 10 seconds of recording. The pouring time (cooling time) is about 2 seconds, with 100 frames in the results sequence. Its set-up is shown in Figure~\ref{Exp_LN2}.
 
 \begin{figure}[ht]
    \centering
@@ -148,23 +148,28 @@ In addition to the common technique for NDT \& E, Fast Fourier Transform in LIT\
 \label{sub:roc_curve_analysis}
 Receiver operating characteristic (ROC) curve is a technique in statistics which helps visualize, organize and select classifiers based on their performance. The curve graph is created by plotting the the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings. More details about concepts and definitions can be found in [T. Fawcett 2006]\cite{Fawcett2006}.
 
-A binary map of defects location is built and correlated to the post-processed images in gray scale, the lay-out is sketched in Figure~\ref{binary}. The main algorithm in the calculation of TPR and FPR is clarified as:
+Implemented in this study, a binary map of defects location is built and correlated to the post-processed images in gray scale, and the lay-out is sketched in Figure~\ref{binary}. The main algorithm in the calculation of TPR and FPR is clarified as:
 \begin{enumerate}
-   \item 
-   \item 
+   \item Get the best gray-scale result from post-processing thermal images as the test image;
+   \item Resize the defect map as the same size of the test image;
+   \item Choose a thresholding step number $N$($N=1000$ in this study) and establish the step value of thresholding [from $0$, $\frac{1}{N}$, $\frac{2}{N}$ till $1 (=\frac{N}{N})$];
+   \item For each thresholding step, binarize the test image with the thresholding and then compare it to the defect map, getting the corresponding TPR and FPR value;
+   \item Iterate the binarization and comparison till to plot a whole curve.
 \end{enumerate}
 
 
 \begin{figure}[ht]
    \centering
-   \subfloat[Cool map]
-   {
-      \includegraphics[scale=0.8]{graph/Cool_ROC.png}
-   }
    \subfloat[Binary map of defects]
    {
       \includegraphics[scale=0.195]{graph/Schema_done.png}
+      \label{bin_map}
    }
+   \subfloat[Cool map]
+   {
+      \includegraphics[scale=0.8]{graph/Cool_ROC.png}
+      \label{cool_map}
+   }   
    \caption{One example of ROC analysis (LN2 results) and binary map}
    \label{binary}
 \end{figure}
