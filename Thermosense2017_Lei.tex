@@ -180,27 +180,82 @@ Implemented in this study, a binary map of defects location is built and correla
 % section methods (end)
 \section{Results \& Discussion} % (fold)
 \label{sec:results_&_discussion}
-Figure~\ref{PCT_result} illustrates the PCT results of three stimulation techniques.
+Figure~\ref{raw_results} and \ref{LIT_results} illustrates respectively the Raw and PCT results of three stimulation techniques.
+\begin{figure}[ht]
+   \centering
+   \subfloat[Flash Raw 23]
+   {
+      \includegraphics[scale=0.5]{graph/Flash_Raw23.png}
+   }
+   \hspace{10pt}
+   \subfloat[Flash Raw 60]
+   {
+      \includegraphics[scale=0.5]{graph/Flash_Raw60.png}
+   }
+   \hspace{10pt}
+   \subfloat[LN2 Raw]
+   {
+      \includegraphics[scale=0.5]{graph/Cool_Raw.png}
+   }
+   \caption{Thermal Raw Images of PT and LN2 stimulation techniques}      
+   \label{raw_results}
+\end{figure}
+
+\begin{figure}[ht]
+   \centering
+   \subfloat[LIT4 FFT in Amplitude]
+   {
+      \includegraphics[scale=0.5]{graph/LIT4_AMP.png}
+   }
+   \hspace{10pt}
+   \subfloat[LIT4 FFT in Phase]
+   {
+      \includegraphics[scale=0.5]{graph/LIT4_PHA.png}
+   }
+   \hspace{10pt}
+   \subfloat[LIT8 FFT in Amplitude]
+   {
+      \includegraphics[scale=0.5]{graph/LIT8_AMP.png}
+   }
+   \hspace{10pt}
+   \subfloat[LIT8 FFT in Phase]
+   {
+      \includegraphics[scale=0.5]{graph/LIT8_PHA.png}
+   }
+   \hspace{10pt}
+   \subfloat[LIT16 FFT in Amplitude]
+   {
+      \includegraphics[scale=0.5]{graph/LIT16_AMP.png}
+   }
+   \hspace{10pt}
+   \subfloat[LIT16 FFT in Phase]
+   {
+      \includegraphics[scale=0.5]{graph/LIT16_PHA.png}
+   }
+   \caption{FFT in amplitude and Phase results for LIT}      
+   \label{LIT_results}
+\end{figure}
+The corresponding PCT results are represented in Figure~\ref{PCT_result}:
 \begin{figure}[ht]
     \centering
     \subfloat[Flash PCT 2nd Image]{
-      \includegraphics[scale=0.4]{graph/Flash_PCT_2.png}
+      \includegraphics[scale=0.5]{graph/Flash_PCT_2.png}
       }
     \hspace{10pt}
     \subfloat[LN2 PCT 2nd Image]{
-      \includegraphics[scale=0.4]{graph/Cool_PCT_2.png}
+      \includegraphics[scale=0.5]{graph/Cool_PCT_2.png}
       }
     \hspace{10pt}
     \subfloat[LIT4 PCT 3rd Image]{
-      \includegraphics[scale=0.4]{graph/LIT4_PCT_3.png}
+      \includegraphics[scale=0.5]{graph/LIT4_PCT_3.png}
       }    
-    \hspace{10pt}
+    \\ %\hspace{10pt}
     \subfloat[LIT8 PCT 3rd Image]{
-      \includegraphics[scale=0.4]{graph/LIT8_PCT_3.png}
+      \includegraphics[scale=0.5]{graph/LIT8_PCT_3.png}
       }
     \hspace{10pt}
     \subfloat[LIT16 PCT 3rd Image]{
-      \includegraphics[scale=0.4]{graph/LIT16_PCT_3.png}
+      \includegraphics[scale=0.5]{graph/LIT16_PCT_3.png}
       }
     % \includegraphics[scale=0.4]{graph/LIT4_PCT_3.png}
     % \includegraphics[scale=0.4]{graph/LIT8_PCT_3.png}
@@ -212,8 +267,9 @@ Figure~\ref{PCT_result} illustrates the PCT results of three stimulation techniq
 \subsection{Thermal images comparison} 
 Comparing the processed thermal images, the following observations can be summarized:  
 \begin{itemize}
-    \item 
-    \item 
+    \item All techniques present part of the flaws in the sample;
+    \item PCT post-processing method displays a better results for all.
+    \item More defects are exhibited in Flash stimulation with PCT processing.
 \end{itemize}
 
 \subsection{Corresponding ROC curves comparison}
@@ -222,12 +278,12 @@ Therefore, ROC curves obtained from comparing the binary map of defects location
     \centering
     \subfloat[ROC from PCT Results]
     {
-    \includegraphics[scale=0.55]{graph/ROC_PCT.png}
+    \includegraphics[scale=0.5]{graph/ROC_PCT.png}
     }
     \hspace{10pt}
     \subfloat[ROC from LIT FFT in amplitude results]
     {
-    \includegraphics[scale=0.55]{graph/ROC_LIT_AMP.png}
+    \includegraphics[scale=0.5]{graph/ROC_LIT_AMP.png}
     }
     \caption{ROC curves obtained from above results}
     \label{ROC_curve}
