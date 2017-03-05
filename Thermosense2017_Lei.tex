@@ -43,11 +43,9 @@ Pulsed Thermography (PT) is one of the most common methods in Active Thermograph
 
 \section{INTRODUCTION}
 \label{sec:introduction}  % \label{} allows reference to this section
-NDT \& E -- Thermography:
+In Nondestructive Testing \& Evaluation (NDT \& E) field, Active InfraRed Thermography is a technique widely used in assessing the conditions of parts of material components\cite{Maldague2001theory}. Traditionally, Pulsed Thermography (PT) deploys a thermal stimulation pulse (flash or lamp heating) to produce a thermal contrast between the feature of interest and the background, then monitors the time evolution of the surface temperature. With this rapidity and convenience, numerous studies have been devoted to this technique\cite{Maldague1993Nondestructive,Maldague1994bInfra,2011-ClementeIbarra-Castanedo,2007-Ibarra-Castanedo,duan2013quantitative}.
 
-Active: Flash Heating
-
-Opposite: Cooling
+However, in the past the scientific community only a limited number of studies investigating a cold approach (cooling as the external stimulation in Active Infrared Thermography) have been performed on industrial produce inspection\cite{endohdynamical2012,2012-LewisHom,Lei2016detection}. Thus, the advantage and convenience of using the cold stimulation in IT still remains to be investigated in detail and better understood. The aim of this paper is that of exploring the opposite external stimulation in IR Thermography: cooling instead of heating. THe three methods (two other traditional techniques--Pulsed Thermography and Lock-in Thermography act as the reference) will be applied on a steel slab with different size of flat-bottom-holes. The thermographic images of the experiments will be  treated to produce eventually a binary map of the location of the defects. This map will be statistically evaluated in terms of sensitivity and specificity\cite{Fawcett2006} by comparison with the ’true’ map of the defects, furnishing a rank of the three stimulation methods. 
 
 
 
@@ -73,8 +71,8 @@ One side stimulation approach is often used in the Infrared Thermography for NDT
 The following equipments are set up for this study:
 \begin{itemize}
    \item Infrared Camera FLIR SC3000 (320$\times$240 pixels, 50Hz, GaAs, 8-9 $\mu m$)
-   \item Two pairs halogen lamps with heat source of (???)$W$ (\textbf{REF TO Paolo})
-   \item One pair of modulated halogen lamps (???$W$) served as Lock-in stimulation
+   \item Two pairs halogen lamps with heat source of \textbf{(???)$W$} (\textbf{REF TO Paolo})
+   \item One pair of modulated halogen lamps \textbf{(???$W$)} served as Lock-in stimulation
    \item An isolated bottle full of Liquid Nitrogen
 \end{itemize}
 
@@ -91,7 +89,7 @@ In this study, a specimen made of steel prepared with flat-bottom holes along di
     \label{specimen} 
    \end{figure}  
 
-Where seventeen holes in which diameters vary from 0.4 $cm$  to 3 $cm$, and depths vary from 0.3 $cm$ to 0.9 $cm$. This specimen is painted before the test, in order to increase its emissivity and to get a homogeneous external simulation.
+Where seventeen holes in which diameters vary from 0.4 $cm$  to 3 $cm$, and depths vary from 0.3 $cm$ to 0.9 $cm$ (from bottom). The whole thickness is 3 $cm$ (\textbf{???Verify with Paolo}). This specimen is painted before the test, in order to increase its emissivity and to get a homogeneous external simulation.
 
 % subsection specimen (end)
 \subsection{Stimulation Techniques} % (fold)
@@ -99,7 +97,7 @@ Where seventeen holes in which diameters vary from 0.4 $cm$  to 3 $cm$, and dept
 Three external stimulations are planned to deployed on the sample, for the sake of  obtaining a good comparison in results: 
 \begin{itemize}
    \item Pulse Thermography (PT) 
-   \item Lock-in Thermography (LT)
+   \item Lock-in Thermography (LIT)
    \item Liquid Nitrogen cooling (LN2)
 \end{itemize}
 Known as the traditional and fast technique in NDT \& E, Pulse Thermography acts as the reference during this test. When neglecting heat exchange with the environment, the pulse of energy $Q$, delivered on a layer of thickness $L$, characterized by a density $\rho$, a specific heat $C_p$ and a thermal conductivity $\lambda$ (or a thermal diffusivity $\alpha$) gives increment to a temperature behavior on the heated surface by:
@@ -108,7 +106,8 @@ Known as the traditional and fast technique in NDT \& E, Pulse Thermography acts
    \label{eq_pt}
 \end{equation}
 
-For the situation of modulated periodic heating, 3 different angular frequencies $\omega$ of 100~$Hz$, 200~$Hz$ and 400~$Hz$ (??? \textbf{VERIFY with Paolo}) are performed in Lock-in Thermography. By the convolution integral, Eq~(\ref{eq_pt}) becomes:
+For the situation of modulated periodic heating, 3 different angular frequencies $\omega$ of 100~$Hz$ (LIT16), 200~$Hz$ (LIT8) and 400~$Hz$ (LIT4) (\textbf{???VERIFY with Paolo}) are performed in Lock-in Thermography. 
+By the convolution integral, Eq~(\ref{eq_pt}) becomes:
 \begin{equation}
    T(t) = \frac{W}{\lambda}\frac{\alpha}{L}\int_0^t d\tau \Big(1+\sin(\omega \tau - \frac{\pi}{2})\Big)\Big\{1+2\sum_{n=1}^{\infty} e^{-\frac{n^2 \pi ^2\alpha(t-\tau)}{L^2}}\Big\}
 \end{equation}
@@ -137,14 +136,14 @@ The following image-processing techniques and data-analysis methods are employed
    \item Receiver Operating Characteristic curves (ROC Curves)
 \end{itemize}
 
-\subsection{PCT}
+\subsection{Principal Component Thermography (PCT)}
 Principal Component Thermography technique\cite{Rajic2002} uses “singular value decomposition (SVD) to reduce the matrix of observations to a highly compact statistical representation of the spatial and temporal variations relating to contrast information associated with underlying structural flaws”.
 
-\subsection{FFT in Phase and Amplitude}
+\subsection{FFT in Phase and Amplitude for LIT}
 In addition to the common technique for NDT \& E, Fast Fourier Transform in LIT\cite{wu1998lock} is also one of the most applied technique in IR Thermography, which is based on the periodic heating of the object under test. A thermal wave is likewise generated and propagates inside the material. In real experimental cases the thermal wave is composed by a principal frequency and several harmonics where the amplitude of the Fast Fourier Transform is a function of frequency. By selecting the component with the highest amplitude it is possible to produce a map of phase at the corresponding frequency where the defect appears enhanced.
 
 
-\subsection{ROC curve analysis} % (fold)
+\subsection{ROC Curve analysis} % (fold)
 \label{sub:roc_curve_analysis}
 Receiver operating characteristic (ROC) curve is a technique in statistics which helps visualize, organize and select classifiers based on their performance. The curve graph is created by plotting the the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings. More details about concepts and definitions can be found in [T. Fawcett 2006]\cite{Fawcett2006}.
 
@@ -180,22 +179,25 @@ Implemented in this study, a binary map of defects location is built and correla
 % section methods (end)
 \section{Results \& Discussion} % (fold)
 \label{sec:results_&_discussion}
-Figure~\ref{raw_results} and \ref{LIT_results} illustrates respectively the Raw and PCT results of three stimulation techniques.
+Figure~\ref{raw_results} illustrates the thermal raw images of PT and LN2. And Lock-In FFT results can be found in Figure~\ref{LIT_results}.
 \begin{figure}[ht]
    \centering
-   \subfloat[Flash Raw 23]
+   \subfloat[Flash Raw Frame 23]
    {
       \includegraphics[scale=0.5]{graph/Flash_Raw23.png}
+      \label{Flash_raw23}
    }
    \hspace{10pt}
-   \subfloat[Flash Raw 60]
+   \subfloat[Flash Raw Frame 60]
    {
       \includegraphics[scale=0.5]{graph/Flash_Raw60.png}
+      \label{Flash_raw60}
    }
    \hspace{10pt}
-   \subfloat[LN2 Raw]
+   \subfloat[LN2 Raw Frame 41]
    {
       \includegraphics[scale=0.5]{graph/Cool_Raw.png}
+      \label{LN2_raw}
    }
    \caption{Thermal Raw Images of PT and LN2 stimulation techniques}      
    \label{raw_results}
@@ -221,11 +223,13 @@ Figure~\ref{raw_results} and \ref{LIT_results} illustrates respectively the Raw 
    \subfloat[LIT8 FFT in Phase]
    {
       \includegraphics[scale=0.5]{graph/LIT8_PHA.png}
+      \label{LIT8_ph}
    }
    \hspace{10pt}
    \subfloat[LIT16 FFT in Amplitude]
    {
       \includegraphics[scale=0.5]{graph/LIT16_AMP.png}
+      \label{LIT16_ph}
    }
    \hspace{10pt}
    \subfloat[LIT16 FFT in Phase]
@@ -235,7 +239,15 @@ Figure~\ref{raw_results} and \ref{LIT_results} illustrates respectively the Raw 
    \caption{FFT in amplitude and Phase results for LIT}      
    \label{LIT_results}
 \end{figure}
-The corresponding PCT results are represented in Figure~\ref{PCT_result}:
+
+\subsection{Thermal images comparison} 
+
+From the results above, raw images in Figure~\ref{raw_results} display that the most detectable flaws are the ones with high aspect ratio (ie. diameter-to-depth). What's more, for PT stimulation, a small hole with diameter 0.4 $cm$, depth\footnote{It should be noted that the depth values mentioned here and after are from the bottom of the sample, therefore the real corresponding depths should be these values subtracted by the thickness.} 0.9 $cm$ (left-upper in Figure~\ref{Flash_raw23}) appeared in frame 23, and disappeared after, while another two holes with diameter 2 $cm$, depth 0.9 $cm$ and two with diameter 3 $cm$, depth 0.5 $cm$ (center in Figure~\ref{Flash_raw60}) appeared in frame 60.  
+
+For LIT results, FFT in Amplitude has a better detectable flaws than FFT in Phase, as there are some noise in all Phase images. LIT8 and LIT16 have about four more detected flaws than LIT4. Whereas, for FFT in Phase for LIT8 and LIT16, there come up some inverse gray-scale values. This might due to the reverse image question.
+
+After processed by PCT, Figure~\ref{PCT_results} exhibits a clearer consequence. It can be observed that most of the flaws are visible, especially in PT image. There are less in the one of LIT4.
+%The corresponding PCT results are represented in Figure~\ref{PCT_results}.
 \begin{figure}[ht]
     \centering
     \subfloat[Flash PCT 2nd Image]{
@@ -261,19 +273,21 @@ The corresponding PCT results are represented in Figure~\ref{PCT_result}:
     % \includegraphics[scale=0.4]{graph/LIT8_PCT_3.png}
     % \includegraphics[scale=0.4]{graph/LIT16_PCT_3.png}
     \caption{PCT results of corresponding technique}
-    \label{PCT_result}
+    \label{PCT_results}
 \end{figure}
 
-\subsection{Thermal images comparison} 
-Comparing the processed thermal images, the following observations can be summarized:  
+
+Comparing the processed thermal images, the following summaries can be obtained:  
 \begin{itemize}
     \item All techniques present part of the flaws in the sample;
-    \item PCT post-processing method displays a better results for all.
-    \item More defects are exhibited in Flash stimulation with PCT processing.
+    \item PCT post-processing method displays a better results for all;
+    \item More defects are exhibited in Flash stimulation with PCT processing;
+    %\item For LIT8 and LIT16, there are some reverse image question.
 \end{itemize}
 
+
 \subsection{Corresponding ROC curves comparison}
-Therefore, ROC curves obtained from comparing the binary map of defects location to above PCT results are represented in Figure~\ref{ROC_curve}.
+Therefore, ROC curves obtained from comparing the binary map of defects location to above results are represented in Figure~\ref{ROC_curve}.
 \begin{figure}[ht]
     \centering
     \subfloat[ROC from PCT Results]
@@ -289,7 +303,10 @@ Therefore, ROC curves obtained from comparing the binary map of defects location
     \label{ROC_curve}
 \end{figure}
 
+Where the \textit{sensitivity} is the True positive rate, \textit{1-specificity} is the False positive rate.
+From the curves of PCT results, one can easily notice that the five curves have almost the same performance of classification in the beginning. When the \textit{tp rate} arrives at $0.3$, PT curve becomes the nearest to the northwest (where \textit{tp rate} is higher, \textit{fp rate} is lower or both). The second one is the LN2 curve. But it has a bit higher \textit{tp rate} than PT after \textit{fp rate} reaches $0.4$. LIT8 and LIT16 curves act almost the same performance before \textit{tp rate} attains $0.7$. After that LIT16 has a higher \textit{tp rate} than LIT8. Whereas the LIT4 curve keeps closest to the diagonal line $y=x$, which represents the strategy of randomly guessing a class.
 
+It is also the same case for the curves of LIT Amplitude that LIT4 has an unfavorable performance in classification. And LIT16 has a bit higher \textit{tp rate} than LIT8, too. Because of the reverse image problem, one plots only the LIT amplitude ROC curve.
 % section results_&_discussion (end)
 
 
@@ -300,8 +317,10 @@ In this study one investigates an opposite external stimulation--cooling instead
 A steel specimen is used to test three different stimulations for thermal images and also ROC analysis comparison. 
 Results shows that all techniques present part of the flaws in the sample, whereas LN2 technique represents the defects just at the beginning, this may due to the high conductivity of steel. 
 In thermal results, the PCT post-processing method displays a better results for all. More defects are exhibited in Flash stimulation with PCT processing.
-What's more, in ROC analysis, the best curve obtained is also by the Flash technique.
+ROC curve analysis has elucidated a straightforward classification comparison, in which the best curve obtained is by the Flash technique with PCT processing.
 
+In future work, other common composite materials such as CFRP (Carbon fiber reinforced polymer), GFRP (Glass Fiber Reinforced Polymer ) will be chosen as specimen. The way of Liquid Nitrogen pouring may be replaced by spraying onto the sample surface, which can reduce the inhomogeneous cooling problem. To enhance the penetration of heat inside the sample, a proposition that heating in one side and cooling the other side might be taken into consideration.
+Even though LN2 technique in this study has not shown enough advantages, this exploration of opposite way of external stimulation in InfraRed Thermography might propel new ideas of approaches for NDT \& E.
 
 % Begin the Introduction below the Keywords. The manuscript should not have headers, footers, or page numbers. It should be in a one-column format. References are often noted in the text and cited at the end of the paper.
 
@@ -473,6 +492,7 @@ What's more, in ROC analysis, the best curve obtained is also by the Flash techn
 % \noindent\textbf{Theorem 1.} For any unbiased estimator...
 
 % Formal statements of lemmas and algorithms receive a similar treatment.
+\newpage
 
 \acknowledgments % equivalent to \section*{ACKNOWLEDGMENTS}       
  
